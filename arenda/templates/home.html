@@ -1,0 +1,15 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<h1>Добро пожаловать на главную страницу!</h1>
+<p>
+    Это ваша домашняя страница. Добро пожаловать!    
+</p>
+<a href="{% url 'category_list' %}" class="btn btn-primary">View Categories</a>
+
+{% if user.is_authenticated %}
+    <p>Привет, {{ user.username }}! Вы вошли в систему.</p>
+{% else %}
+    <p>Вы не вошли в систему. <a href="{% url 'login' %}">Войти</a> или <a href="{% url 'register' %}">Зарегистрироваться</a>.</p>
+{% endif %}
+{% endblock %}

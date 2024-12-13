@@ -1,0 +1,234 @@
+/* Стили для базовой структуры */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Высота для всего документа */
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    flex: 1; /* Растягивается, чтобы занять всё пространство */
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1; /* Растягивается, чтобы вытолкнуть футер вниз */
+    padding: 20px;
+}
+
+/* Ограничение ширины для контента */
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto; /* Центрируем контент */
+}
+
+/* Стили для навигационной строки */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Равномерное распределение */
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    position: relative;
+}
+
+/* Логотип слева */
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navbar .logo img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+/* Ссылки справа */
+.navbar .links {
+    display: flex;
+    gap: 15px;
+}
+
+.navbar .links a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.navbar .links a:hover {
+    color: #00bcd4;
+}
+/* Стили для footer */
+.footer {
+    background-color: #f0f0f0; /* Светло-серый фон */
+    color: #333; /* Темный текст */
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 14px;
+}
+
+/* Медиазапросы для адаптивности */
+
+/* Стили для колонок */
+.column {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #fdfdfd;
+}
+
+/* Стили для элементов списка */
+.list-item {
+    cursor: pointer;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s;
+}
+
+.list-item:hover {
+    background-color: #e6e6e6;
+}
+
+/* Активный элемент */
+.active {
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+
+.categories-container {
+    display: flex;
+    flex-direction: row; /* Располагает колонки в ряд */
+    gap: 20px; /* Добавляет отступ между колонками */
+    width: 100%;
+    max-width: 1200px; /* Максимальная ширина контейнера */
+    margin: 0 auto; /* Центрирует контейнер */
+}
+
+.main-column {
+    flex: 1; /* Первая колонка занимает равное место */
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.subcategories-column {
+    flex: 2; /* Вторая колонка шире */
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.main-categories {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.main-category-item {
+    position: relative;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.main-category-item:hover > .subcategories {
+    display: block;
+}
+
+.subcategories {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    background-color: white;
+    border: 1px solid #ddd;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.subcategories li a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Для экранов от 1200px и больше (десктопы) */
+@media (min-width: 1200px) {
+    .navbar .links a {
+        font-size: 18px;
+    }
+    .footer {
+        font-size: 16px;
+    }
+}
+/* Для экранов от 768px до 1199px (планшеты и маленькие десктопы) */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+    .navbar .links a {
+        font-size: 14px;
+    }
+    .footer {
+        font-size: 14px;
+    }
+}
+
+/* Для экранов меньше 768px (мобильные телефоны) */
+@media (max-width: 767px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 15px;
+    }
+    .navbar .logo {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .navbar .links {
+        display: block;
+        text-align: center;
+        gap: 10px;
+    }
+    .navbar .links a {
+        font-size: 16px;
+    }
+    .content {
+        padding: 10px;
+    }
+    .footer {
+        font-size: 12px;
+        padding: 10px 5px;
+    }
+}
