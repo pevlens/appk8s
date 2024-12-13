@@ -1,0 +1,28 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+
+<div class="categories-container">
+    <!-- Колонка с главными категориями -->
+    <ul class="main-categories">
+        {% for main_category in main_categories %}
+            <li class="main-category-item">
+                <a href="{% url 'category_detail' main_category.id %}">
+                    {{ main_category.name }}
+                </a>
+                <!-- Подкатегории -->
+                <ul class="subcategories hidden">
+                    {% for subcategory in main_category.children.all %}
+                        <li>
+                            <a href="{% url 'category_detail' subcategory.id %}">
+                                {{ subcategory.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+</div>
+{% endblock %}

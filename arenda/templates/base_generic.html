@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+    <script src="{% static '/js/main.js' %}" defer></script>
+    <title>{% block title %}Мой сайт{% endblock %}</title>
+    {% block head %}{% endblock %}
+
+</head>
+<body>
+    <div class="wrapper">
+        <div class="navbar">
+            <a href="/" class="logo">
+                
+                Главная
+            </a>
+            <div class="links">
+                {% if user.is_authenticated %}
+                Привет, {{ user.username }}! | <a href="{% url 'logout' %}">Выйти</a>
+            {% else %}
+                <a href="{% url 'login' %}">Войти</a> 
+                <a href="{% url 'register' %}">Регистрация</a>
+            {% endif %}
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="container">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    
+ <!-- Нижняя часть страницы (footer) -->
+ <footer class="footer">
+    <div class="container">
+        <p>© 2024 Мой сайт. Все права защищены.</p>
+        <p>Контакты: email@example.com | Телефон: +7 (123) 456-78-90</p>
+    </div>
+</footer>
+
+
+</body>
+</html>
