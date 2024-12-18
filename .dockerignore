@@ -2,3 +2,4 @@
 dockerd.log
 .gitignore
 README.md
+build.log
