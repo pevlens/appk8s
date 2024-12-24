@@ -21,12 +21,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = 'django-insecure-&^_f*kqj_vbufw44+dnyzuf@r5j8fui50d(-1h#l+!g5v0ou6n'
-SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret-key')
+SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret-key').replace("\n", "").replace("\r", "")
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 DEBUG = bool(os.getenv('DEBUG'))
 
-ALLOWED_HOSTS = []
+POD_IP = os.getenv('POD_IP', '')
+ALLOWED_HOSTS = [POD_IP, 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -80,9 +81,9 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DATABASE_NAME', 'default_db'),
-        'USER': os.getenv('DATABASE_USER', 'default_user'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD', 'default_password'),
+        'NAME': os.getenv("DATABASE_NAME", 'default_db').replace("\n", "").replace("\r", ""),
+        'USER': os.getenv("DATABASE_USER", 'default_user').replace("\n", "").replace("\r", ""),
+        'PASSWORD': os.getenv("DATABASE_PASSWORD", 'default_password').replace("\n", "").replace("\r", ""),
         'HOST': os.getenv('DATABASE_HOST', 'localhost'),
         'PORT': os.getenv('DATABASE_PORT', '5432'),
         
