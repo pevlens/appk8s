@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret-key').replace("\n", "").re
 DEBUG = bool(os.getenv('DEBUG'))
 
 POD_IP = os.getenv('POD_IP', '')
-ALLOWED_HOSTS = [POD_IP, 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [POD_IP, 'localhost', '127.0.0.1','site.psn.by']
 
 
 # Application definition
